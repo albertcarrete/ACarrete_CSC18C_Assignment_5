@@ -1,5 +1,10 @@
 import java.util.Random;
 
+	/*
+	 * Author: 		Albert Carrete
+	 * Class: 		CSC-18C
+	 * Project: 	Assignment 5 
+	 */
 
 public class Assignment5Test {
 
