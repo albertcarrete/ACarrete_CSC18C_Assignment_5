@@ -15,13 +15,15 @@ public class Assignment5Test {
 	 * */
 	public static void main(String[] args) {
 		
-		Stack<Integer> integer_stack = new Stack<Integer>(Integer.class);
+		Stack<Integer> integer_stack = new Stack<Integer>(Integer.class,5);
 		
-		integer_stack.push(20);
-		integer_stack.push(30);
-		integer_stack.pop();
-		integer_stack.pop();
-		integer_stack.push(30);
+		
+		for(int i = 0; i < 20; i++){
+			integer_stack.push(20);		
+		}
+
+
+
 
 		Object[] integer_stack_array = integer_stack.toArray();
 		displayArray("Integer Stack: ",integer_stack_array);
@@ -36,6 +38,7 @@ public class Assignment5Test {
 		float_stack.push(10.2f);
 		Object[] float_stack_array = float_stack.toArray();
 		displayArray("Float Stack: ",float_stack_array);	
+		
 		
 		Stack<String> string_stack = new Stack<String>(String.class);
 		

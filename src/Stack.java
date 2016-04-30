@@ -38,6 +38,19 @@ public class Stack <T extends Comparable<T>>{
         if ( !isFull() )
         {
             items[++top]=data;
+        }else{
+        	System.out.println("Maxed out at " + items.length);
+        	
+        	T[] tempArr = copyArray(items);
+        	int length = (tempArr.length / 2) + tempArr.length;
+        	displayArray(tempArr);
+        	items =(T[]) Array.newInstance(this.clazz,length);
+        	displayArray(items);
+
+        	copyArray(tempArr,items);
+        	displayArray("completed", items);
+            items[++top]=data;
+
         }
         // else how do we handle pushing onto a full stack?
     }
@@ -57,7 +70,38 @@ public class Stack <T extends Comparable<T>>{
             return data;        	
         }
     }
-    
+	@SuppressWarnings("unchecked")
+	private T[] copyArray(T[]a){
+		
+		
+		T[]b = (T[]) Array.newInstance(this.clazz,a.length);
+		
+		if(a.length == 0){
+			b[0] = a[0];
+		}else{
+			for(int i = 0; i < a.length; i++){
+//				System.out.println("b[" + i + "] = " + b[i] + " | a[" + (start+i) + "] = " + a[i]);
+
+				b[i] = a[i];
+			}			
+		}
+		return b;
+	}  
+	// Copies Array A to Array B
+	private void copyArray(T[]a, T[]b){
+		
+		
+		
+		if(a.length == 0){
+			b[0] = a[0];
+		}else if(a.length <= b.length){
+			for(int i = 0; i < a.length; i++){
+//				System.out.println("b[" + i + "] = " + b[i] + " | a[" + (start+i) + "] = " + a[i]);
+
+				b[i] = a[i];
+			}			
+		}
+	}  
     
     public T[] toArray(){
 		T[] arr = (T[]) Array.newInstance(this.clazz, items.length);
@@ -67,9 +111,16 @@ public class Stack <T extends Comparable<T>>{
 		return arr;   	
     }
     
-	public void displayArray(){
-		for(int i = 0; i < items.length; i++){
-			System.out.print(items[i] + " ");
+	public void displayArray(T[] a){
+		for(int i = 0; i < a.length; i++){
+			System.out.print(a[i] + " ");
+		}		
+		System.out.println("");
+	}
+	public void displayArray(String title, T[] a){
+		System.out.print(title + " ");
+		for(int i = 0; i < a.length; i++){
+			System.out.print(a[i] + " ");
 		}		
 		System.out.println("");
 	}
