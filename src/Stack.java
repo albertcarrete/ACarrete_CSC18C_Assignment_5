@@ -38,17 +38,11 @@ public class Stack <T extends Comparable<T>>{
         if ( !isFull() )
         {
             items[++top]=data;
-        }else{
-        	System.out.println("Maxed out at " + items.length);
-        	
+        }else{        	
         	T[] tempArr = copyArray(items);
         	int length = (tempArr.length / 2) + tempArr.length;
-        	displayArray(tempArr);
         	items =(T[]) Array.newInstance(this.clazz,length);
-        	displayArray(items);
-
         	copyArray(tempArr,items);
-        	displayArray("completed", items);
             items[++top]=data;
 
         }
